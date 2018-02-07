@@ -6,11 +6,22 @@
 "use strict";
 
 const ping = require("ping");
+const gpio = require("onoff");
 
+const RELAY1 = 7;
+const RELAY2 = 3;
+const RELAY3 = 22;
+const RELAY4 = 25;
+
+let relay1, relay2, relay3, relay4;
+
+// Promise based sleep function.
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// Ping 5 websites. Return true if 3/5 can be pinged successfully. Otherwise,
+// return false.
 async function pingInternet() {
   const hosts = ["p2pvps.org", "google.com", "yahoo.com", "amazon.com", "en.wikipedia.org"];
 
@@ -33,5 +44,36 @@ async function pingInternet() {
   return false;
 }
 
+function initRelay() {
+  relay1 = new gpio(RELAY1, "out");
+  relay1.writeSync(0);
+
+  relay2 = new gpio(RELAY2, "out");
+  relay2.writeSync(0);
+
+  relay3 = new gpio(RELAY3, "out");
+  relay3.writeSync(0);
+
+  relay4 = new gpio(RELAY4, "out");
+  relay4.writeSync(0);
+}
+
+function toggleRelay1() {
+  const val = relay1.readSync();
+
+  if (val === 0) {
+    console.log(`Relay 1 is off. Turning it on.`);
+    relay1.writeSync(1);
+  } else if (val === 1) {
+    console.log(`Relay 1 is on. Turning it off.`);
+    relay1.writeSync(1);
+  } else {
+    console.log(`Relay 1 is unknown state: ${val}`);
+    relay1.writeSync(0);
+  }
+}
+
 module.exports.sleep = sleep;
 module.exports.pingInternet = pingInternet;
+module.exports.initRelay = initRelay;
+module.exports.toggleRelay1 = toggleRelay1;
