@@ -16,7 +16,7 @@ async function pingInternet() {
 
   let res;
   for (let i = 0; i < hosts.length; i++) {
-    res = await ping.promise.probe(host[i]);
+    res = await ping.promise.probe(hosts[i]);
     console.log(res);
   }
 }
