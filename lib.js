@@ -76,9 +76,11 @@ function toggleRelay1() {
   */
 
   if (toggleVal) {
+    console.log(`Turning relay 1 off.`);
     relay1.writeSync(0);
     toggleVal = false;
   } else {
+    console.log(`Turning relay 1 on.`);
     relay1.writeSync(1);
     toggleVal = true;
   }
