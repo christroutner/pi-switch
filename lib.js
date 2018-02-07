@@ -8,7 +8,7 @@
 const ping = require("ping");
 const gpio = require("onoff").Gpio;
 
-const RELAY1 = 7;
+const RELAY1 = 4;
 const RELAY2 = 3;
 const RELAY3 = 22;
 const RELAY4 = 25;
