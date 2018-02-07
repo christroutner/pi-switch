@@ -12,7 +12,7 @@ function sleep(ms) {
 }
 
 async function pingInternet() {
-  const hosts = ["p2pvps.org", "google.com", "yahoo.com", "asdahrhejah.com"];
+  const hosts = ["p2pvps.org", "google.com", "yahoo.com", "amazon.com", "en.wikipedia.org"];
 
   let res;
   let passCnt = 0;
