@@ -8,10 +8,10 @@
 const ping = require("ping");
 const gpio = require("onoff").Gpio;
 
-const RELAY1 = 4;
-const RELAY2 = 3;
-const RELAY3 = 22;
-const RELAY4 = 25;
+const RELAY1 = 4; // Pi pin 7, BCM 4
+const RELAY2 = 22; // Pi pin 3, BCM 22
+const RELAY3 = 6; // Pi pin 22, BCM 6
+const RELAY4 = 26; // Pi pin 25, BCM 26
 
 let relay1, relay2, relay3, relay4;
 let toggleVal = false;
