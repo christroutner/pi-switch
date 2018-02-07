@@ -24,7 +24,7 @@ const pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 
 async function pollInternet() {
   // Poll the internet to ensure the device is still connected to the internet.
-  await lib.pingInternet();
+  const netConnection = await lib.pingInternet();
 
   // Test succeeded? Clear the counter.
   // Test failed? Increment the counter.
