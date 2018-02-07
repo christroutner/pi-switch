@@ -15,20 +15,18 @@
 "use strict";
 
 const onoff = require("onoff");
-var lib = require("./lib.js");
-var blah;
+const lib = require("./lib.js");
 
-const POLL_INTERVAL = 60000 * 3; // 3 minutes
+const POLL_INTERVAL = 60000 * 1; // 3 minutes
 
 // Create a new timer event.
 const pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 
-function pollInternet() {
+async function pollInternet() {
   // Poll the internet to ensure the device is still connected to the internet.
+  await lib.pingInternet();
 
   // Test succeeded? Clear the counter.
-
   // Test failed? Increment the counter.
-
-    // Test failed 5 times? Power cycle the modem
+  // Test failed 5 times? Power cycle the modem
 }

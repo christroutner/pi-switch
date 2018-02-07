@@ -4,3 +4,20 @@
 */
 
 "use strict";
+
+const ping = require("ping");
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function pingInternet() {
+  const hosts = ["p2pvps.org", "google.com", "yahoo.com"];
+
+  for (let i = 0; i < hosts.length; i++) {
+    const res = await ping.promise.probe(host[i]);
+    console.log(res);
+  }
+}
+
+module.exports.sleep = sleep;

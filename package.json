@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/christroutner/pi-switch#readme",
   "dependencies": {
-    "onoff": "^1.1.9"
+    "onoff": "^1.1.9",
+    "ping": "^0.2.2"
   },
   "devDependencies": {
     "eslint": "^4.11.0",
