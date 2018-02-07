@@ -10,13 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/christroutner/pi-switch.git"
   },
-  "keywords": [
-    "raspberry",
-    "pi",
-    "relay",
-    "javascript",
-    "node"
-  ],
+  "keywords": ["raspberry", "pi", "relay", "javascript", "node"],
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -25,5 +19,12 @@
   "homepage": "https://github.com/christroutner/pi-switch#readme",
   "dependencies": {
     "onoff": "^1.1.9"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-unicorn": "^3.0.0",
+    "prettier": "^1.8.2"
   }
 }
