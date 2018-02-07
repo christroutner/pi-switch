@@ -30,3 +30,4 @@ async function pollInternet() {
   // Test failed? Increment the counter.
   // Test failed 5 times? Power cycle the modem
 }
+pollInternet();
