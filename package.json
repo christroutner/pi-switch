@@ -10,7 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/christroutner/pi-switch.git"
   },
-  "keywords": ["raspberry", "pi", "relay", "javascript", "node"],
+  "keywords": [
+    "raspberry",
+    "pi",
+    "relay",
+    "javascript",
+    "node"
+  ],
   "author": "Chris Troutner <chris.troutner@gmail.com>",
   "license": "MIT",
   "bugs": {

@@ -14,8 +14,9 @@
 
 "use strict";
 
-var onoff = require("onoff");
+const onoff = require("onoff");
 var lib = require("./lib.js");
+var blah;
 
 const POLL_INTERVAL = 60000 * 3; // 3 minutes
 
