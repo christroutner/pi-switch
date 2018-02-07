@@ -6,7 +6,7 @@
 "use strict";
 
 const ping = require("ping");
-const gpio = require("onoff");
+const gpio = require("onoff").Gpio;
 
 const RELAY1 = 7;
 const RELAY2 = 3;
