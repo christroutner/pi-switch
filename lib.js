@@ -14,6 +14,7 @@ const RELAY3 = 22;
 const RELAY4 = 25;
 
 let relay1, relay2, relay3, relay4;
+let toggleVal = false;
 
 // Promise based sleep function.
 function sleep(ms) {
@@ -59,6 +60,7 @@ function initRelay() {
 }
 
 function toggleRelay1() {
+  /*
   const val = relay1.readSync();
 
   if (val === 0) {
@@ -70,6 +72,15 @@ function toggleRelay1() {
   } else {
     console.log(`Relay 1 is unknown state: ${val}`);
     relay1.writeSync(0);
+  }
+  */
+
+  if (toggleVal) {
+    relay1.writeSync(0);
+    toggleVal = false;
+  } else {
+    relay1.writeSync(1);
+    toggleVal = true;
   }
 }
 
