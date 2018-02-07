@@ -1,0 +1,29 @@
+{
+  "name": "pi-switch",
+  "version": "1.0.0",
+  "description": "Control a relay board with a Raspberry Pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo no tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christroutner/pi-switch.git"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "relay",
+    "javascript",
+    "node"
+  ],
+  "author": "Chris Troutner <chris.troutner@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christroutner/pi-switch/issues"
+  },
+  "homepage": "https://github.com/christroutner/pi-switch#readme",
+  "dependencies": {
+    "onoff": "^1.1.9"
+  }
+}
