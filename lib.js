@@ -47,8 +47,11 @@ async function pingInternet() {
 
 function initRelay() {
   relay1 = new gpio(RELAY1, "out");
-  relay1.writeSync(0);
-
+  relay1.write(0, function(err, val) {
+    if (err) console.error(err);
+    console.log(`Relay 1 initialize with ${val}`);
+  });
+  /*
   relay2 = new gpio(RELAY2, "out");
   relay2.writeSync(0);
 
@@ -57,6 +60,7 @@ function initRelay() {
 
   relay4 = new gpio(RELAY4, "out");
   relay4.writeSync(0);
+*/
 }
 
 function toggleRelay1() {
