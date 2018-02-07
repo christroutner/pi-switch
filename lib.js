@@ -14,10 +14,12 @@ function sleep(ms) {
 async function pingInternet() {
   const hosts = ["p2pvps.org", "google.com", "yahoo.com"];
 
+  let res;
   for (let i = 0; i < hosts.length; i++) {
-    const res = await ping.promise.probe(host[i]);
+    res = await ping.promise.probe(host[i]);
     console.log(res);
   }
 }
 
 module.exports.sleep = sleep;
+module.exports.pingInternet = pingInternet;
