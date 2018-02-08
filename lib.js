@@ -47,7 +47,7 @@ async function pingInternet() {
 
 // This function is the same as .write() execept that it returns a Promise which
 // resolves into a value (0 or 1) when the pins output is changes to that value.
-gpio.prototype.writeOut = function(pin, val) {
+gpio.prototype.writeOut = function(val) {
   return new Promise((resolve, reject) => {
     this.write(val, function(err, value) {
       if (err) return reject(err);
