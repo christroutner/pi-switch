@@ -135,7 +135,7 @@ async function toggleRelay1() {
     //  console.log(`Relay 1 turned on with ${value}`);
     //});
     val = await relay1.writeOut(1);
-    console.log(`Relay 1 turned on with ${value}`);
+    console.log(`Relay 1 turned on with ${val}`);
 
     toggleVal = true;
   }
