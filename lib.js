@@ -45,6 +45,8 @@ async function pingInternet() {
   return false;
 }
 
+// This function is the same as .write() execept that it returns a Promise which
+// resolves into a value (0 or 1) when the pins output is changes to that value.
 gpio.prototype.writeOut = function(pin, val) {
   return new Promise((resolve, reject) => {
     this.write(val, function(err, value) {
@@ -115,22 +117,26 @@ async function toggleRelay1() {
   }
   */
 
+  let val;
   if (toggleVal) {
     console.log(`Turning relay 1 off.`);
     //relay1.write(0, function(err, value) {
     //  if (err) console.error(err);
     //  console.log(`Relay 1 turned off with ${value}`);
     //});
-    const val = await relay1.writeOut(0);
+    val = await relay1.writeOut(0);
     console.log(`Relay 1 turned off with ${val}`);
 
     toggleVal = false;
   } else {
     console.log(`Turning relay 1 on.`);
-    relay1.write(1, function(err, value) {
-      if (err) console.error(err);
-      console.log(`Relay 1 turned on with ${value}`);
-    });
+    //relay1.write(1, function(err, value) {
+    //  if (err) console.error(err);
+    //  console.log(`Relay 1 turned on with ${value}`);
+    //});
+    val = await relay1.writeOut(1);
+    console.log(`Relay 1 turned on with ${value}`);
+
     toggleVal = true;
   }
 }
