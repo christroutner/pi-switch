@@ -60,7 +60,7 @@ function makeOutput(pin, val) {
 }
 
 async function initRelay() {
-  await makeOutput(RELAY1, 0);
+  relay1 = await makeOutput(RELAY1, 0);
   console.log(`Relay 1 initialized`);
 
   //relay1 = new gpio(RELAY1, "out");
