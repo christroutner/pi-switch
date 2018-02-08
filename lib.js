@@ -82,58 +82,19 @@ async function initRelay() {
 
   relay4 = await makeOutput(RELAY4, 0);
   console.log(`Relay 4 initialized`);
-
-  //relay1 = new gpio(RELAY1, "out");
-  //relay1.write(0, function(err, val) {
-  //  if (err) console.error(err);
-  //  console.log(`Relay 1 initialize with ${val}`);
-  //});
-
-  /*
-  relay2 = new gpio(RELAY2, "out");
-  relay2.writeSync(0);
-
-  relay3 = new gpio(RELAY3, "out");
-  relay3.writeSync(0);
-
-  relay4 = new gpio(RELAY4, "out");
-  relay4.writeSync(0);
-*/
 }
 
+// This is a test function that toggles Relay 1 on and off whenever it is called.
 async function toggleRelay1() {
-  /*
-  const val = relay1.readSync();
-
-  if (val === 0) {
-    console.log(`Relay 1 is off. Turning it on.`);
-    relay1.writeSync(1);
-  } else if (val === 1) {
-    console.log(`Relay 1 is on. Turning it off.`);
-    relay1.writeSync(1);
-  } else {
-    console.log(`Relay 1 is unknown state: ${val}`);
-    relay1.writeSync(0);
-  }
-  */
-
   let val;
   if (toggleVal) {
     console.log(`Turning relay 1 off.`);
-    //relay1.write(0, function(err, value) {
-    //  if (err) console.error(err);
-    //  console.log(`Relay 1 turned off with ${value}`);
-    //});
     val = await relay1.writeOut(0);
     console.log(`Relay 1 turned off with ${val}`);
 
     toggleVal = false;
   } else {
     console.log(`Turning relay 1 on.`);
-    //relay1.write(1, function(err, value) {
-    //  if (err) console.error(err);
-    //  console.log(`Relay 1 turned on with ${value}`);
-    //});
     val = await relay1.writeOut(1);
     console.log(`Relay 1 turned on with ${val}`);
 
@@ -141,7 +102,33 @@ async function toggleRelay1() {
   }
 }
 
+async function relay1On() {
+  try {
+    console.log(`Turning Relay 1 ON...`);
+    await relay1.writeOut(1);
+    console.log(`...Relay 1 turned ON.`);
+    return true;
+  } catch (err) {
+    console.error(`Error in lib.js/relay1On(): `, err);
+    throw err;
+  }
+}
+
+async function relay1Off() {
+  try {
+    console.log(`Turning Relay 1 OFF...`);
+    await relay1.writeOut(0);
+    console.log(`...Relay 1 turned OFF.`);
+    return true;
+  } catch (err) {
+    console.error(`Error in lib.js/relay1Off(): `, err);
+    throw err;
+  }
+}
+
 module.exports.sleep = sleep;
 module.exports.pingInternet = pingInternet;
 module.exports.initRelay = initRelay;
 module.exports.toggleRelay1 = toggleRelay1;
+module.exports.relay1On = relay1On;
+module.exports.relay1Off = relay1Off;

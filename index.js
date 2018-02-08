@@ -46,8 +46,23 @@ async function pollInternet() {
 pollInternet();
 
 // Power cycle the modem.
-function powerCycle() {
+async function powerCycle() {
   console.log(`Power cycling the modem.`);
+
+  // Power off the modem.
+  await lib.relay1On();
+
+  // Wait 1 minute;
+  await lib.sleep(60000 * 1);
+
+  // Power the modem back on.
+  await lib.relay1Off();
+
+  // Wait for the modem to boot back up.
+  await lib.sleep(60000 * 5);
+
+  // Begin polling the internet again.
+  pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 }
 
 lib.initRelay();
