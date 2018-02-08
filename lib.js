@@ -45,6 +45,15 @@ async function pingInternet() {
   return false;
 }
 
+gpio.prototype.writeOut = function(pin, val) {
+  return new Promise((resolve, reject) => {
+    this.write(val, function(err, value) {
+      if (err) return reject(err);
+      return resolve(value);
+    });
+  });
+};
+
 // Returns a promise, which resolves to a gpio object when the pin is
 // changed to an output.
 // Currently, the output pin defaults to low. TODO implement val to set to high
@@ -62,6 +71,15 @@ function makeOutput(pin, val) {
 async function initRelay() {
   relay1 = await makeOutput(RELAY1, 0);
   console.log(`Relay 1 initialized`);
+
+  relay2 = await makeOutput(RELAY2, 0);
+  console.log(`Relay 2 initialized`);
+
+  relay3 = await makeOutput(RELAY3, 0);
+  console.log(`Relay 3 initialized`);
+
+  relay4 = await makeOutput(RELAY4, 0);
+  console.log(`Relay 4 initialized`);
 
   //relay1 = new gpio(RELAY1, "out");
   //relay1.write(0, function(err, val) {
@@ -81,7 +99,7 @@ async function initRelay() {
 */
 }
 
-function toggleRelay1() {
+async function toggleRelay1() {
   /*
   const val = relay1.readSync();
 
@@ -99,10 +117,13 @@ function toggleRelay1() {
 
   if (toggleVal) {
     console.log(`Turning relay 1 off.`);
-    relay1.write(0, function(err, value) {
-      if (err) console.error(err);
-      console.log(`Relay 1 turned off with ${value}`);
-    });
+    //relay1.write(0, function(err, value) {
+    //  if (err) console.error(err);
+    //  console.log(`Relay 1 turned off with ${value}`);
+    //});
+    const val = await relay1.writeOut(0);
+    console.log(`Relay 1 turned off with ${val}`);
+
     toggleVal = false;
   } else {
     console.log(`Turning relay 1 on.`);
