@@ -20,7 +20,7 @@ const POLL_INTERVAL = 60000 * 1; // 3 minutes
 let passCnt = 0;
 
 // Create a new timer event to ping the internet.
-const pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
+let pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 
 async function setupRelays() {
   return await lib.initRelay();
