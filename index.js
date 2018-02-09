@@ -19,7 +19,7 @@ const lib = require("./lib.js");
 const POLL_INTERVAL = 60000 * 1; // 3 minutes
 let passCnt = 0;
 
-// Create a new timer event.
+// Create a new timer event to ping the internet.
 const pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 
 // Poll the internet. Power cycle the modem if the internet can't be reached.
@@ -35,9 +35,10 @@ async function pollInternet() {
 
   // Test failed? Increment the counter.
   passCnt++;
+  console.log(`Ping test failed ${passCnt} times.`);
 
   // Test failed 5 times? Power cycle the modem
-  if (passCnt >= 5) {
+  if (passCnt >= 2) {
     passCnt = 0;
     clearInterval(pollTimer); // Disable the timer until the modem can be rebooted.
     powerCycle();
@@ -47,25 +48,28 @@ pollInternet();
 
 // Power cycle the modem.
 async function powerCycle() {
-  console.log(`Power cycling the modem.`);
+  console.log(`Power cycling the modem...`);
 
   // Power off the modem.
   await lib.relay1On();
+  console.log(`...Modem power off...`);
 
   // Wait 1 minute;
   await lib.sleep(60000 * 1);
 
   // Power the modem back on.
   await lib.relay1Off();
+  console.log(`...Modem power on...`);
 
   // Wait for the modem to boot back up.
   await lib.sleep(60000 * 5);
+  console.log(`...Internet should be restored.`);
 
   // Begin polling the internet again.
   pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 }
 
-lib.initRelay();
-setInterval(() => {
-  lib.toggleRelay1();
-}, 10000);
+//lib.initRelay();
+//setInterval(() => {
+//  lib.toggleRelay1();
+//}, 10000);
