@@ -16,7 +16,7 @@
 
 const lib = require("./lib.js");
 
-const POLL_INTERVAL = 60000 * 1; // 3 minutes
+const POLL_INTERVAL = 60000 * 3; // 3 minutes
 let passCnt = 0;
 
 // Create a new timer event to ping the internet.
@@ -43,7 +43,7 @@ async function pollInternet() {
   console.log(`Ping test failed ${passCnt} times.`);
 
   // Test failed 5 times? Power cycle the modem
-  if (passCnt >= 2) {
+  if (passCnt >= 5) {
     passCnt = 0;
     clearInterval(pollTimer); // Disable the timer until the modem can be rebooted.
     powerCycle();
