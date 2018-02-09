@@ -22,6 +22,11 @@ let passCnt = 0;
 // Create a new timer event to ping the internet.
 const pollTimer = setInterval(() => pollInternet(), POLL_INTERVAL);
 
+async function setupRelays() {
+  return await lib.initRelay();
+}
+setupRelays();
+
 // Poll the internet. Power cycle the modem if the internet can't be reached.
 async function pollInternet() {
   // Poll the internet to ensure the device is still connected to the internet.
@@ -44,7 +49,7 @@ async function pollInternet() {
     powerCycle();
   }
 }
-pollInternet();
+//pollInternet();
 
 // Power cycle the modem.
 async function powerCycle() {
